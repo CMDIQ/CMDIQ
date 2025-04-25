@@ -1,11 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>CMDIQ Documentation</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMDIQ-Core</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111827;
+      --card: #f3f4f6;
+      --accent: #3b82f6;
+    }
+    [data-theme='dark'] {
+      --bg: #0f172a;
+      --text: #e2e8f0;
+      --card: #1e293b;
+      --accent: #60a5fa;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      width: 100%;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin: 0 auto 2rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.25rem;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+    }
+
+    .footer {
+      margin-top: auto;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to CMDIQ-Core 🚀</h1>
-  <p>This is the starting point for CMDIQ's open-source admin command center.</p>
-  <p>Visit the <a href="https://github.com/CMDIQ/CMDIQ-Core">GitHub repo</a> for details.</p>
+  <div class="toggle">
+    <button onclick="toggleTheme()" class="btn">🌓 Toggle Theme</button>
+  </div>
+
+  <header>
+    <h1>CMDIQ-Core 🚀</h1>
+    <p>A Unified Admin Command Center – built to simplify Intune, Jamf, Nexthink-style analytics, and IT support in one interface.</p>
+  </header>
+
+  <div class="actions">
+    <a href="https://github.com/CMDIQ/CMDIQ-Core" class="btn" target="_blank">🔗 GitHub Repo</a>
+    <a href="https://github.com/CMDIQ/CMDIQ-Core/discussions" class="btn" target="_blank">💬 Discussions</a>
+    <a href="https://cmdiq.github.io/CMDIQ-Core/" class="btn">📘 Docs (Coming Soon)</a>
+  </div>
+
+  <div class="footer">
+    &copy; CMDIQ-Core 2024. Made by Admins, for Admins.
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+
+    // Set theme from system preference on load
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+  </script>
 </body>
 </html>
