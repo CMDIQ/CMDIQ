@@ -4,115 +4,81 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CMDIQ-Core</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #ffffff;
-      --text: #111827;
-      --card: #f3f4f6;
-      --accent: #3b82f6;
-    }
-    [data-theme='dark'] {
-      --bg: #0f172a;
-      --text: #e2e8f0;
-      --card: #1e293b;
-      --accent: #60a5fa;
-    }
-
     body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      transition: background 0.3s ease, color 0.3s ease;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #222;
+      text-align: center;
+      padding: 2rem;
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    header {
-      width: 100%;
-      padding: 2rem 1rem;
-      text-align: center;
+    .dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.6rem 1rem;
+      background-color: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       margin-bottom: 0.5rem;
     }
 
     p {
-      font-size: 1.1rem;
-      max-width: 640px;
-      margin: 0 auto 2rem;
-    }
-
-    .actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
+      font-size: 1.2rem;
       margin-bottom: 2rem;
     }
 
-    .btn {
-      padding: 0.75rem 1.25rem;
-      border: none;
-      border-radius: 8px;
-      background: var(--accent);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .button-link {
       text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      background-color: #3b82f6;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.2s ease;
     }
 
-    .toggle {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      cursor: pointer;
-    }
-
-    .footer {
-      margin-top: auto;
-      padding: 1rem;
-      font-size: 0.85rem;
-      color: var(--text);
+    .button-link:hover {
+      background-color: #2563eb;
     }
   </style>
 </head>
 <body>
-  <div class="toggle">
-    <button onclick="toggleTheme()" class="btn">🌓 Toggle Theme</button>
-  </div>
+  <button class="theme-toggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
 
-  <header>
-    <h1>CMDIQ-Core 🚀</h1>
-    <p>A Unified Admin Command Center – built to simplify Intune, Jamf, Nexthink-style analytics, and IT support in one interface.</p>
-  </header>
+  <h1>CMDIQ-Core 🚀</h1>
+  <p>A Unified Admin Command Center – built to simplify Intune, Jamf, Nexthink-style analytics, and IT support in one interface.</p>
 
-  <div class="actions">
-    <a href="https://github.com/CMDIQ/CMDIQ-Core" class="btn" target="_blank">🔗 GitHub Repo</a>
-    <a href="https://github.com/CMDIQ/CMDIQ-Core/discussions" class="btn" target="_blank">💬 Discussions</a>
-    <a href="https://cmdiq.github.io/CMDIQ-Core/" class="btn">📘 Docs (Coming Soon)</a>
-  </div>
-
-  <div class="footer">
-    &copy; CMDIQ-Core 2024. Made by Admins, for Admins.
+  <div class="button-group">
+    <a class="button-link" href="https://github.com/CMDIQ/CMDIQ-Core" target="_blank">🔗 GitHub Repo</a>
+    <a class="button-link" href="https://github.com/CMDIQ/CMDIQ-Core/discussions" target="_blank">💬 Discussions</a>
+    <a class="button-link" href="#" onclick="alert('Documentation coming soon!')">📄 Docs (Coming Soon)</a>
   </div>
 
   <script>
     function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute('data-theme');
-      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+      document.body.classList.toggle('dark-mode');
     }
-
-    // Set theme from system preference on load
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
   </script>
 </body>
 </html>
